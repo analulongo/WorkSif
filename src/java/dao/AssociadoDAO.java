@@ -25,7 +25,6 @@ public class AssociadoDAO {
             em.merge(assoc);
             sucesso = true;
         } catch (Exception e) {
-            e.printStackTrace();
         }
  
         return sucesso;
@@ -36,7 +35,6 @@ public class AssociadoDAO {
         try {
             assoc = em.find(Associado.class, codigo);
         } catch (Exception e) {
-            e.printStackTrace();
         }
  
         return assoc;
@@ -49,7 +47,6 @@ public class AssociadoDAO {
             em.remove(assoc);
             sucesso = true;
         } catch (Exception e) {
-            e.printStackTrace();
         }
  
         return sucesso;
@@ -61,7 +58,6 @@ public class AssociadoDAO {
             Query query = em.createQuery("Select c from associado c");
             assocs = query.getResultList();
         } catch (Exception e) {
-            e.printStackTrace();
         }
          
         return assocs;

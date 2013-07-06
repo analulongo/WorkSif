@@ -17,6 +17,10 @@ import model.Exemplar;
 
 
 
+/**
+ *
+ * @author Felipe
+ */
 @Named(value = "exemplarBean")
 @SessionScoped
 public class ExemplarBean implements Serializable {
