@@ -5,7 +5,8 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
         <title>TODO supply a title</title>
     </head>
@@ -23,7 +24,9 @@ and open the template in the editor.
                      <h:outputText value="ISBN" />
                      <h:inputText value="#{reservaBean.reserva.isbn}" />
                     <h:outputText value="dataReser" />
-                    <h:inputText value="#{reservaBean.reserva.dataRes}" />
+                    <h:inputText id="dataRes" value="#{reservaBean.reserva.dataRes}">
+                        <f:convertDateTime type="dateRes" dateStyle="short" pattern="yyyy-MM-dd"/>
+                   </h:inputText>
                       <h:outputText value="Status" />
                       <h:inputText value="#{reservaBean.reserva.status}" />
                   
