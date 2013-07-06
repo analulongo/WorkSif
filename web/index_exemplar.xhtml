@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+ <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="dadosExemplar">
+            <fieldset style="width: 350px">
+                <legend>Novo Exemplar</legend>
+                <h:commandButton value="Novo" action="#{exemplarBean.novo}" />
+            </fieldset>
+            <fieldset style="width: 350px">
+                <legend>Dados do exemplar</legend>
+                <h:panelGrid columns="4">
+                    <h:outputText value="numero" />
+                    <h:inputText value="#{exemplarBean.ex.numero}" />
+                    <h:outputText value="isbn" />
+                    <h:inputText value="#{exemplarBean.ex.isbn}" />
+                    <h:outputText value="preco" />
+                    <h:inputText value="#{exemplarBean.ex.preco}" />
+                    <h:commandButton value="Gravar" action="#{exemplarBean.gravar}" />
+                    <h:commandButton value="Remover" action="#{exemplarBean.remover}" rendered="#{exemplarBean.ex.numero > 0}" />
+                </h:panelGrid>
+            </fieldset>
+        </h:form>
+    </h:body>
+</html>
+
+

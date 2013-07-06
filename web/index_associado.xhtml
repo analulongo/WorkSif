@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+ <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="dadosAssociado">
+            <fieldset style="width: 350px">
+                <legend>Novo Associado</legend>
+                <h:commandButton value="Novo" action="#{associadoBean.novo}" />
+            </fieldset>
+            <fieldset style="width: 350px">
+                <legend>Dados do Associado</legend>
+                <h:panelGrid columns="4">
+                    <h:outputText value="nome" />
+                    <h:inputText value="#{associadoBean.assoc.nome}" />
+                    <h:outputText value="endereco" />
+                    <h:inputText value="#{associadoBean.assoc.endereco}" />
+                    <h:outputText value="email" />
+                    <h:inputText value="#{associadoBean.assoc.email}" />
+                    <h:outputText value="status" />
+                    <h:inputText value="#{associadoBean.assoc.status}" />
+                    <h:commandButton value="Gravar" action="#{associadoBean.gravar}" />
+                    <h:commandButton value="Remover" action="#{associadoBean.remover}" rendered="#{associadoBean.assoc.codigo > 0}" />
+                </h:panelGrid>
+            </fieldset>
+        </h:form>
+    </h:body>
+</html>
+
+
