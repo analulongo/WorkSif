@@ -8,7 +8,6 @@ package dao;
  *
  * @author Rosiani
  */
- 
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,14 +15,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import model.Publicacao;
 
- 
 @Stateless
 public class PublicacaoDAO {
- 
-    @PersistenceContext(unitName="SistemaPU")
+
+    @PersistenceContext(unitName = "SistemaPU")
     private EntityManager em;
- 
-    public boolean gravar(Publicacao pub){
+
+    public boolean gravar(Publicacao pub) {
         boolean sucesso = false;
         try {
             em.merge(pub);
@@ -31,22 +29,22 @@ public class PublicacaoDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
- 
+
         return sucesso;
     }
- 
-    public Publicacao selecionar(String isbn){
+
+    public Publicacao selecionar(String isbn) {
         Publicacao pub = null;
         try {
             pub = em.find(Publicacao.class, isbn);
         } catch (Exception e) {
             e.printStackTrace();
         }
- 
+
         return pub;
     }
- 
-    public boolean remover(Publicacao pub){
+
+    public boolean remover(Publicacao pub) {
         boolean sucesso = false;
         try {
             pub = em.find(Publicacao.class, pub.getIsbn());
@@ -55,10 +53,10 @@ public class PublicacaoDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
- 
+
         return sucesso;
     }
- 
+
     public List<Publicacao> listar() {
         List<Publicacao> pub = null;
         try {
@@ -67,7 +65,7 @@ public class PublicacaoDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-         
+
         return pub;
     }
 }

@@ -8,7 +8,6 @@ package dao;
  *
  * @author Rosiani
  */
-
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,14 +15,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import model.Exemplar;
 
- 
 @Stateless
 public class ExemplarDAO {
- 
-    @PersistenceContext(unitName="SistemaPU")
+
+    @PersistenceContext(unitName = "SistemaPU")
     private EntityManager em;
- 
-    public boolean gravar(Exemplar exemplar){
+
+    public boolean gravar(Exemplar exemplar) {
         boolean sucesso = false;
         try {
             em.merge(exemplar);
@@ -31,22 +29,22 @@ public class ExemplarDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
- 
+
         return sucesso;
     }
- 
-    public Exemplar selecionar(Long codigo){
+
+    public Exemplar selecionar(Long codigo) {
         Exemplar exemplar = null;
         try {
             exemplar = em.find(Exemplar.class, codigo);
         } catch (Exception e) {
             e.printStackTrace();
         }
- 
+
         return exemplar;
     }
- 
-    public boolean remover(Exemplar exemplar){
+
+    public boolean remover(Exemplar exemplar) {
         boolean sucesso = false;
         try {
             exemplar = em.find(Exemplar.class, exemplar.getNumero());
@@ -55,10 +53,10 @@ public class ExemplarDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
- 
+
         return sucesso;
     }
- 
+
     public List<Exemplar> listar() {
         List<Exemplar> exemplar = null;
         try {
@@ -67,9 +65,7 @@ public class ExemplarDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-         
+
         return exemplar;
     }
 }
-
-

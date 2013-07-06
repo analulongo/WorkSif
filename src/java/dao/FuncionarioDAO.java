@@ -1,6 +1,5 @@
 package dao;
 
- 
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -8,14 +7,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import model.Funcionario;
 
- 
 @Stateless
 public class FuncionarioDAO {
- 
-    @PersistenceContext(unitName="SistemaPU")
+
+    @PersistenceContext(unitName = "SistemaPU")
     private EntityManager em;
- 
-    public boolean gravar(Funcionario func){
+
+    public boolean gravar(Funcionario func) {
         boolean sucesso = false;
         try {
             em.merge(func);
@@ -23,22 +21,22 @@ public class FuncionarioDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
- 
+
         return sucesso;
     }
- 
-    public Funcionario selecionar(Long codigo){
+
+    public Funcionario selecionar(Long codigo) {
         Funcionario func = null;
         try {
             func = em.find(Funcionario.class, codigo);
         } catch (Exception e) {
             e.printStackTrace();
         }
- 
+
         return func;
     }
- 
-    public boolean remover(Funcionario func){
+
+    public boolean remover(Funcionario func) {
         boolean sucesso = false;
         try {
             func = em.find(Funcionario.class, func.getCodigo());
@@ -47,10 +45,10 @@ public class FuncionarioDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
- 
+
         return sucesso;
     }
- 
+
     public List<Funcionario> listar() {
         List<Funcionario> func = null;
         try {
@@ -59,8 +57,7 @@ public class FuncionarioDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-         
+
         return func;
     }
 }
-

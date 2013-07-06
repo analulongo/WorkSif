@@ -15,8 +15,6 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import model.Exemplar;
 
-
-
 /**
  *
  * @author Felipe
@@ -24,20 +22,20 @@ import model.Exemplar;
 @Named(value = "exemplarBean")
 @SessionScoped
 public class ExemplarBean implements Serializable {
- 
+
     @EJB
     private ExemplarDAO exDAO;
     private Exemplar ex = new Exemplar();
     private List<Exemplar> listExemplar;
- 
-    public void novo(){
+
+    public void novo() {
         ex = new Exemplar();
     }
- 
+
     public void gravar() {
         FacesContext context = FacesContext.getCurrentInstance();
         boolean resultado = exDAO.gravar(ex);
- 
+
         if (resultado) {
             ex = new Exemplar();
             context.addMessage(null, new FacesMessage("Exemplar gravado com sucesso"));
@@ -45,16 +43,16 @@ public class ExemplarBean implements Serializable {
             context.addMessage(null, new FacesMessage("Falha ao gravar Exemplar!"));
         }
     }
- 
+
     public void selecionar(ActionEvent evento) {
         Long numero = (Long) evento.getComponent().getAttributes().get("numero");
         ex = exDAO.selecionar(numero);
     }
- 
+
     public void remover() {
         FacesContext context = FacesContext.getCurrentInstance();
         boolean resultado = exDAO.remover(ex);
- 
+
         if (resultado) {
             ex = new Exemplar();
             context.addMessage(null, new FacesMessage("Exemplar removido com sucesso"));
@@ -86,6 +84,4 @@ public class ExemplarBean implements Serializable {
     public void setListExemplar(List<Exemplar> listExemplar) {
         this.listExemplar = listExemplar;
     }
-
-   
 }

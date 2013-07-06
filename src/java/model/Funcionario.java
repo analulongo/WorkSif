@@ -17,20 +17,18 @@ import javax.persistence.Table;
  * @author Rosiani
  */
 @Entity
-@Table(name="funcionario")
+@Table(name = "funcionario")
 public class Funcionario implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="codigo")
+    @Column(name = "codigo")
     private Long codigo;
- 
-    @Column(length=35, name="nome")
+    @Column(length = 35, name = "nome")
     private String nome;
- 
-    @Column(length=35, name="funcao")
+    @Column(length = 35, name = "funcao")
     private String funcao;
-    
-    @Column(length=20, name="email")
+    @Column(length = 20, name = "email")
     private String email;
 
     public Long getCodigo() {
@@ -65,14 +63,13 @@ public class Funcionario implements Serializable {
         this.nome = nome;
     }
 
-    
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (codigo != null ? codigo.hashCode() : 0);
         return hash;
     }
- 
+
     @Override
     public boolean equals(Object object) {
         if (!(object instanceof Funcionario)) {

@@ -11,25 +11,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
- 
+
 @Entity
-@Table(name="publicacao")
+@Table(name = "publicacao")
 public class Publicacao implements Serializable {
- 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(length=12,name="isbn")
+    @Column(length = 12, name = "isbn")
     private String isbn;
- 
-    @Column(length=40, name="titulo")
+    @Column(length = 40, name = "titulo")
     private String titulo;
- 
-    @Column(length=35, name="autor")
+    @Column(length = 35, name = "autor")
     private String autor;
-    
-    @Column(length=30, name="editora")
+    @Column(length = 30, name = "editora")
     private String editora;
-  
 
     public String getAutor() {
         return autor;
@@ -62,9 +58,6 @@ public class Publicacao implements Serializable {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-    
-       
-    
 //    @Override
 //    public int hashCode() {
 //        int hash = 0;
@@ -83,5 +76,4 @@ public class Publicacao implements Serializable {
 //        }
 //        return true;
 //    }
-
 }

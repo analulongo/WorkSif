@@ -19,26 +19,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
- 
+
 @Entity
-@Table(name="associado")
+@Table(name = "associado")
 public class Associado implements Serializable {
- 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="codigo")
+    @Column(name = "codigo")
     private Long codigo;
- 
-    @Column(length=35, name="nome")
+    @Column(length = 35, name = "nome")
     private String nome;
- 
-    @Column(length=45, name="endereco")
+    @Column(length = 45, name = "endereco")
     private String endereco;
-    
-    @Column(length=20, name="email")
+    @Column(length = 20, name = "email")
     private String email;
-    
-    @Column(length=100, name="status")
+    @Column(length = 100, name = "status")
     private String status;
 
     public Long getCodigo() {
@@ -80,16 +76,14 @@ public class Associado implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (codigo != null ? codigo.hashCode() : 0);
         return hash;
     }
- 
+
     @Override
     public boolean equals(Object object) {
         if (!(object instanceof Associado)) {

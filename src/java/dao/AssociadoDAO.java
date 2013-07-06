@@ -4,7 +4,6 @@
  */
 package dao;
 
- 
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -12,35 +11,34 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import model.Associado;
 
- 
 @Stateless
 public class AssociadoDAO {
- 
-    @PersistenceContext(unitName="SistemaPU")
+
+    @PersistenceContext(unitName = "SistemaPU")
     private EntityManager em;
- 
-    public boolean gravar(Associado assoc){
+
+    public boolean gravar(Associado assoc) {
         boolean sucesso = false;
         try {
             em.merge(assoc);
             sucesso = true;
         } catch (Exception e) {
         }
- 
+
         return sucesso;
     }
- 
-    public Associado selecionar(Long codigo){
+
+    public Associado selecionar(Long codigo) {
         Associado assoc = null;
         try {
             assoc = em.find(Associado.class, codigo);
         } catch (Exception e) {
         }
- 
+
         return assoc;
     }
- 
-    public boolean remover(Associado assoc){
+
+    public boolean remover(Associado assoc) {
         boolean sucesso = false;
         try {
             assoc = em.find(Associado.class, assoc.getCodigo());
@@ -48,10 +46,10 @@ public class AssociadoDAO {
             sucesso = true;
         } catch (Exception e) {
         }
- 
+
         return sucesso;
     }
- 
+
     public List<Associado> listar() {
         List<Associado> assocs = null;
         try {
@@ -59,8 +57,7 @@ public class AssociadoDAO {
             assocs = query.getResultList();
         } catch (Exception e) {
         }
-         
+
         return assocs;
     }
 }
-

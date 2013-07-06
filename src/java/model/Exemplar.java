@@ -17,17 +17,16 @@ import javax.persistence.Table;
  * @author Rosiani
  */
 @Entity
-@Table(name="exemplar")
+@Table(name = "exemplar")
 public class Exemplar implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="numero")
+    @Column(name = "numero")
     private Long numero;
- 
-    @Column(length=12, name="isbn")
+    @Column(length = 12, name = "isbn")
     private String isbn;
- 
-    @Column(name="preco")
+    @Column(name = "preco")
     private float preco;
 
     public String getIsbn() {
@@ -53,7 +52,4 @@ public class Exemplar implements Serializable {
     public void setPreco(float preco) {
         this.preco = preco;
     }
-    
-    
-    
 }
