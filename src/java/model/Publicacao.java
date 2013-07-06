@@ -17,7 +17,6 @@ import javax.persistence.Table;
 public class Publicacao implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 12, name = "isbn")
     private String isbn;
     @Column(length = 40, name = "titulo")
