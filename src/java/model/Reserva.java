@@ -36,7 +36,7 @@ public class Reserva implements Serializable {
         this.id = id;
     }
     
-     @Column(name = "Data_Emp")
+     @Column(name = "Data")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataRes;
   
