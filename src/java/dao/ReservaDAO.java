@@ -43,7 +43,7 @@ public class ReservaDAO {
     public boolean remover(Reserva reserva) {
         boolean sucesso = false;
         try {
-            reserva= em.find(Reserva.class, reserva.getId());
+            reserva = em.find(Reserva.class, reserva.getId());
             em.remove(reserva);
             sucesso = true;
         } catch (Exception e) {

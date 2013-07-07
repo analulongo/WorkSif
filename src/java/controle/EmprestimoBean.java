@@ -18,7 +18,7 @@ import model.Emprestimo;
 public class EmprestimoBean implements Serializable {
 
     @EJB
-    private EmprestimoDAO  emprestimoDAO;
+    private EmprestimoDAO emprestimoDAO;
     private Emprestimo emprestimo = new Emprestimo();
     private List<Emprestimo> emprestimos;
 

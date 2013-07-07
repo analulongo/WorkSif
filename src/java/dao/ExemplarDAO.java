@@ -68,4 +68,18 @@ public class ExemplarDAO {
 
         return exemplar;
     }
+    public List<Exemplar>Consulta(String isbn){
+        List<Exemplar> exemplar = null;
+        try {
+              exemplar = em.createNamedQuery("Exemplar.AllConsultaISBN")
+                    .setParameter("isbn", isbn)
+                    .getResultList();
+          } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return exemplar; 
+    }
+
 }
+

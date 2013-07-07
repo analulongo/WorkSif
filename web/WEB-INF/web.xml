@@ -20,6 +20,8 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>index_consulta.jsf</welcome-file>
+        <welcome-file>index_publicacao.jsf</welcome-file>
+        <welcome-file>index_exemplar.jsf</welcome-file>
     </welcome-file-list>
     <error-page>
         <error-code>404</error-code>

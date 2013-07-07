@@ -1,6 +1,5 @@
 package controle;
 
-
 import dao.ReservaDAO;
 import java.io.Serializable;
 import java.util.List;
@@ -17,7 +16,7 @@ import model.Reserva;
 public class ReservaBean implements Serializable {
 
     @EJB
-    private ReservaDAO  reservaDAO;
+    private ReservaDAO reservaDAO;
     private Reserva reserva = new Reserva();
     private List<Reserva> reservas;
 

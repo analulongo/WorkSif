@@ -21,16 +21,16 @@ and open the template in the editor.
                 <h:panelGrid columns="4">
                     <h:outputText value="codigoAssoc" />
                     <h:inputText value="#{emprestimoBean.emprestimo.codAssoc}" />
-                     <h:outputText value="Nro_exemplar" />
-                     <h:inputText value="#{emprestimoBean.emprestimo.nroExemplar}" />
+                    <h:outputText value="Nro_exemplar" />
+                    <h:inputText value="#{emprestimoBean.emprestimo.nroExemplar}" />
                     <h:outputText value="dataDevol" />
                     <h:inputText id="dateDev" value="#{emprestimoBean.emprestimo.dataDevol}">
-                    <f:convertDateTime type="dateDev" dateStyle="short" pattern="yyyy-MM-dd"/>
-                   </h:inputText>
-                      <h:outputText value="dataDeEmp" />
-                      <h:inputText id="dateEmp" value="#{emprestimoBean.emprestimo.dataEmp}">
-                          <f:convertDateTime type="dateEmp" dateStyle="short" pattern="yyyy-MM-dd"/>
-                   </h:inputText>
+                        <f:convertDateTime type="dateDev" dateStyle="short" pattern="yyyy-MM-dd"/>
+                    </h:inputText>
+                    <h:outputText value="dataDeEmp" />
+                    <h:inputText id="dateEmp" value="#{emprestimoBean.emprestimo.dataEmp}">
+                        <f:convertDateTime type="dateEmp" dateStyle="short" pattern="yyyy-MM-dd"/>
+                    </h:inputText>
                     <h:outputText value="isbn" />
                     <h:inputText value="#{emprestimoBean.emprestimo.isbn}" />
                     <h:commandButton value="Gravar" action="#{emprestimoBean.gravar}" />

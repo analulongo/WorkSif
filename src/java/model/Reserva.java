@@ -19,15 +19,15 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Reserva implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     @Column(name="Codigo")
+    @Column(name = "Codigo")
     private Long id;
-    
     @Column(length = 12, name = "ISBN")
     private String isbn;
-    
+
     public Long getId() {
         return id;
     }
@@ -35,16 +35,11 @@ public class Reserva implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
-     @Column(name = "Data")
+    @Column(name = "Data")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataRes;
-  
     @Column(name = "Codigo_Assoc")
     private int codAssoc;
-    
-    
-    
     @Column(name = "Status")
     private int status;
 
@@ -55,7 +50,6 @@ public class Reserva implements Serializable {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-
 
     public int getCodAssoc() {
         return codAssoc;
@@ -80,9 +74,7 @@ public class Reserva implements Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
-    
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -107,5 +99,4 @@ public class Reserva implements Serializable {
     public String toString() {
         return "model.Reserva[ id=" + id + " ]";
     }
-    
 }

@@ -29,10 +29,20 @@ and open the template in the editor.
                 <f:facet name="header"><h:outputText value="Autor" /></f:facet>
                 <h:outputText value="#{publicacao.autor}" />
             </h:column>
-
-
         </h:dataTable>
-
+        <h:dataTable value="#{publicacaoBean.listExemplarConsulta}" var="exemplar" >
+            <h:column>
+                <f:facet name="header"><h:outputText value="ISBN" /></f:facet>
+                <h:outputText value="#{exemplar.numero}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Titulo" /></f:facet>
+                <h:outputText value="#{exemplar.preco}" />
+            </h:column>
+        </h:dataTable>
+        
+        
+        
         <h:form>
             <h:outputText value="ISBN" />
             <h:inputText value="#{publicacaoBean.isbn}" />

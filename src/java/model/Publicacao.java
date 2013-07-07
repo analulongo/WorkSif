@@ -5,13 +5,15 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashSet;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,9 +25,8 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Publicacao.findAllConsulta", query = "SELECT c FROM Publicacao c WHERE c.isbn=:isbn OR c.titulo=:titulo")})
 public class Publicacao implements Serializable {
-    
+
     public static final String findByPublicacao = "Publicacao.findByPublicacao";
-    
     @Id
     @Column(length = 12, name = "isbn")
     private String isbn;
@@ -35,6 +36,16 @@ public class Publicacao implements Serializable {
     private String autor;
     @Column(length = 30, name = "editora")
     private String editora;
+    @OneToMany(mappedBy = "publicacao", fetch = FetchType.EAGER)
+    private Collection<Exemplar> exemplares;
+
+    public Collection<Exemplar> getExemplares() {
+        return exemplares;
+    }
+
+    public void setExemplares(Collection<Exemplar> exemplares) {
+        this.exemplares = exemplares;
+    }
 
     public String getAutor() {
         return autor;
@@ -67,22 +78,23 @@ public class Publicacao implements Serializable {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-//    @Override
-//    public int hashCode() {
-//        int hash = 0;
-//        hash += (codigo != null ? codigo.hashCode() : 0);
-//        return hash;
-//    }
-// 
-//    @Override
-//    public boolean equals(Object object) {
-//        if (!(object instanceof Associado)) {
-//            return false;
-//        }
-//        Associado other = (Associado) object;
-//        if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
-//            return false;
-//        }
-//        return true;
-//    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (isbn != null ? isbn.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Publicacao)) {
+            return false;
+        }
+        Publicacao other = (Publicacao) object;
+        if ((this.isbn == null && other.isbn != null) || (this.isbn != null && !this.isbn.equals(other.isbn))) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -4,6 +4,7 @@
  */
 package controle;
 
+import dao.ExemplarDAO;
 import dao.PublicacaoDAO;
 import java.io.Serializable;
 import java.util.List;
@@ -13,6 +14,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
+import model.Exemplar;
 import model.Publicacao;
 
 @Named(value = "publicacaoBean")
@@ -21,18 +23,27 @@ public class PublicacaoBean implements Serializable {
 
     @EJB
     private PublicacaoDAO publicacaoDAO;
+    private ExemplarDAO exemplarDAO;
     private Publicacao pub = new Publicacao();
     private List<Publicacao> listPublicacao;
     private List<Publicacao> listPublicacaoConsulta;
+     private List<Exemplar> listExemplarConsulta;
+
+    public List<Exemplar> getListExemplarConsulta() {
+        return listExemplarConsulta;
+    }
+
+    public void setListExemplarConsulta(List<Exemplar> listExemplarConsulta) {
+        this.listExemplarConsulta = listExemplarConsulta;
+    }
 
     public List<Publicacao> getListPublicacaoConsulta() {
-         return listPublicacaoConsulta;
+        return listPublicacaoConsulta;
     }
 
     public void setListPublicacaoConsulta(List<Publicacao> listPublicacaoConsulta) {
         this.listPublicacaoConsulta = listPublicacaoConsulta;
     }
-
 
     public void novo() {
         pub = new Publicacao();
@@ -91,7 +102,6 @@ public class PublicacaoBean implements Serializable {
     public void setPublicacaoDAO(PublicacaoDAO publicacaoDAO) {
         this.publicacaoDAO = publicacaoDAO;
     }
-    
     private String isbn;
     private String titulo;
 
@@ -110,8 +120,15 @@ public class PublicacaoBean implements Serializable {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
     public void listaConsulta() {
         listPublicacaoConsulta = publicacaoDAO.Consulta(isbn, titulo);
     }
+    
+    public void listaConsulta2(){
+        listPublicacaoConsulta = publicacaoDAO.Consulta(isbn, titulo);
+        listExemplarConsulta = exemplarDAO.Consulta(isbn);
+    }
+    
     
 }
