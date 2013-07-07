@@ -21,7 +21,6 @@ import javax.persistence.Table;
 public class Exemplar implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Numero")
     private Long numero;
     @Column(length = 12, name = "ISBN")
