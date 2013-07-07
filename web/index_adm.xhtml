@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Sistema de Controle de Biblioteca</title>
+        <!-- inserir este trecho em todas as paginas -->
+        <LINK rel="stylesheet" type="text/css" href="/css/style.css"/> 
+        <div class="cab" style="background: #DFDFFF;">
+            <div  style="background: url('publico/cabecalho.png') no-repeat scroll 0 0 transparent; 
+                  height: 160px;  left: 459px; position: relative; width: 350px; top: 15px;"/> 
+            <hr style=" color: #000066"/></div>
+
+        <style type="text/css">
+            a{color: #FFFFFF;
+              font-family: Comic Sans MS;                  
+              text-decoration: none;}
+            a:hover { color: #000066; letter-spacing: 0.1em;}
+            #menu{background: #000066;
+                  height: 372px; left: 350px;
+                  position: relative;top: -80px; width: 280px;}
+            #menu a{left: 20px;
+                    position: relative;
+                    width: 200px;}
+            #menu p:hover { background: #DFDFFF;}
+            .letras{width: 320px;position: relative; top: 117px;font-family: Comic Sans MS;text-align: center;}
+            .adm {    width: 700px;left: 330px; position: relative;    }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="adm">
+            <div  class="letras"><h3>Você acessou a área administrativa</h3>
+                <p>Escolha a tarefa a ser executada</p></div>
+            <div id="menu">
+                <fieldset style="width: 250px">
+                    <legend style="color: #FFFFFF;">Tarefas</legend>
+                    <p>
+                        <a href="index.xhtml">Logout</a></p><p>   
+                        <a href="index_associado.xhtml">Cad Associado </a></p><p>
+                        <a href="index_publicacao.xhtml">Cad Publicação</a></p><p>
+                        <a href="index_exemplar.xhtml">Cad Exemplar</a></p><p>
+                        <a href="">Consulta Publicação</a></p><p>
+                        <a href="">Reserva</a></p><p>
+                        <a href="">Emprestimo</a></p><p>                
+                        <a href="">Devolução</a></p>
+                </fieldset></div>
+        </div>
+    </h:body>
+    <div class="footer" style="background: #DFDFFF; font-family: Comic Sans MS">
+        <div class="footer">
+            <hr style=" color: #000066"/>
+            <div class="nomes" style="height: 70px"><p>Ana Lucia  |  Felipe  |  Rosiani</p>
+            </div>
+            <div class="sif" style="  float: right;
+                 font-family: Comic Sans MS;
+                 position: relative;
+                 top: -45px;
+                 width: 139px;">SIF-150 / 2013</div>            
+        </div>           
+    </div>
+</html>
