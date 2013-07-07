@@ -32,11 +32,11 @@ and open the template in the editor.
         </h:dataTable>
         <h:dataTable value="#{publicacaoBean.listExemplarConsulta}" var="exemplar" >
             <h:column>
-                <f:facet name="header"><h:outputText value="ISBN" /></f:facet>
+                <f:facet name="header"><h:outputText value="Numero" /></f:facet>
                 <h:outputText value="#{exemplar.numero}" />
             </h:column>
             <h:column>
-                <f:facet name="header"><h:outputText value="Titulo" /></f:facet>
+                <f:facet name="header"><h:outputText value="Preco" /></f:facet>
                 <h:outputText value="#{exemplar.preco}" />
             </h:column>
         </h:dataTable>
@@ -48,7 +48,7 @@ and open the template in the editor.
             <h:inputText value="#{publicacaoBean.isbn}" />
             <h:outputText value="Titulo" />
             <h:inputText value="#{publicacaoBean.titulo}" />
-            <h:commandButton value="Busca" action="#{publicacaoBean.listaConsulta()}" />
+            <h:commandButton value="Busca" action="#{publicacaoBean.listaConsulta2()}" />
         </h:form>
     </h:body>
 </html>
