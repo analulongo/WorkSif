@@ -10,12 +10,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+/**
+ *
+ * @author Felipe
+ */
 @Entity
 @Table(name = "publicacao")
+@NamedQueries({
+    @NamedQuery(name = "Publicacao.findAllConsulta", query = "SELECT c FROM Publicacao c WHERE c.isbn=:isbn OR c.titulo=:titulo")})
 public class Publicacao implements Serializable {
-
+    
+    public static final String findByPublicacao = "Publicacao.findByPublicacao";
+    
     @Id
     @Column(length = 12, name = "isbn")
     private String isbn;
