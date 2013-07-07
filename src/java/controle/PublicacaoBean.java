@@ -23,6 +23,16 @@ public class PublicacaoBean implements Serializable {
     private PublicacaoDAO publicacaoDAO;
     private Publicacao pub = new Publicacao();
     private List<Publicacao> listPublicacao;
+    private List<Publicacao> listPublicacaoConsulta;
+
+    public List<Publicacao> getListPublicacaoConsulta() {
+         return listPublicacaoConsulta;
+    }
+
+    public void setListPublicacaoConsulta(List<Publicacao> listPublicacaoConsulta) {
+        this.listPublicacaoConsulta = listPublicacaoConsulta;
+    }
+
 
     public void novo() {
         pub = new Publicacao();
@@ -58,6 +68,7 @@ public class PublicacaoBean implements Serializable {
     }
 
     public List<Publicacao> getListPublicacao() {
+        listPublicacao = publicacaoDAO.listar();
         return listPublicacao;
     }
 
@@ -80,4 +91,27 @@ public class PublicacaoBean implements Serializable {
     public void setPublicacaoDAO(PublicacaoDAO publicacaoDAO) {
         this.publicacaoDAO = publicacaoDAO;
     }
+    
+    private String isbn;
+    private String titulo;
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    public void listaConsulta() {
+        listPublicacaoConsulta = publicacaoDAO.Consulta(isbn, titulo);
+    }
+    
 }

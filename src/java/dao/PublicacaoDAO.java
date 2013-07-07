@@ -65,7 +65,21 @@ public class PublicacaoDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+            return pub ;
+}
+    
 
-        return pub;
+    public List<Publicacao> Consulta(String isbn, String titulo) {
+        List<Publicacao> publicacaoConsulta = null;
+        try {
+            publicacaoConsulta = em.createNamedQuery("Publicacao.findAllConsulta")
+                    .setParameter("isbn", isbn)
+                    .setParameter("titulo", titulo)
+                    .getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return  publicacaoConsulta;
     }
+
 }
