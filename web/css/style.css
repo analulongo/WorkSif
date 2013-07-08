@@ -28,14 +28,14 @@ root {
     height: 70px;
 }
 .nomes p{
-   font-family: Comic Sans MS;
+    font-family: Comic Sans MS;
     left: 10px;
     position: relative;
     top: 5px;
 }
 
 /*funcionario*/
-#dadosFuncionario{    
+#dadosFuncionario,#dadosPublicacao{    
     height: 300px;
     left: 437px;
     position: relative;
