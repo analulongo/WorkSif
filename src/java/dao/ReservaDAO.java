@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import model.Exemplar;
 import model.Reserva;
 
 @Stateless
@@ -58,6 +59,36 @@ public class ReservaDAO {
         try {
             Query query = em.createQuery("Select c from reserva c");
             reservas = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return reservas;
+    }
+ /*
+    public List<Reserva> listar(String isbn) {
+        List<Reserva> reservas = null;
+        try {
+            reservas = em.createNamedQuery("Exemplar.AllConsultaISBN")
+                    .setParameter("isbn", isbn)
+                    .getResultList();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return reservas;
+    }
+*/
+    
+        //Funçao retorn lisvro com reserva
+        public List<Reserva> buscaReserva(String isbn) {
+        List<Reserva> reservas = null;
+        try {
+            reservas = em.createNamedQuery("Reserva.Ativa")
+                    .setParameter("isbn", isbn)
+                    .getResultList();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

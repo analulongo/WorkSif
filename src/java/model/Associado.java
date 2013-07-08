@@ -29,17 +29,17 @@ public class Associado implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo")
+    @Column(name = "Codigo")
     private Long codigo;
-    @Column(length = 35, name = "nome")
+    @Column(length = 35, name = "Nome")
     private String nome;
-    @Column(length = 45, name = "endereco")
+    @Column(length = 45, name = "Endereco")
     private String endereco;
-    @Column(length = 20, name = "email")
+    @Column(length = 20, name = "Email")
     private String email;
-    @Column(length = 100, name = "status")
+    @Column(length = 100, name = "Status")
     private String status;
-    /*
+    
      @OneToMany(mappedBy = "associado", fetch = FetchType.LAZY)
      private List<Emprestimo> empList;
 
@@ -50,7 +50,17 @@ public class Associado implements Serializable {
      public void setEmpList(List<Emprestimo> empList) {
      this.empList = empList;
      }
-     */
+     
+    @OneToMany(mappedBy = "associado", fetch = FetchType.EAGER)
+    private List<Reserva> reservaList;
+
+    public List<Reserva> getReservaList() {
+        return reservaList;
+    }
+
+    public void setReservaList(List<Reserva> reservaList) {
+        this.reservaList = reservaList;
+    }
 
     public Long getCodigo() {
         return codigo;

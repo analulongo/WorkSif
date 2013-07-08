@@ -8,38 +8,59 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
-
 /**
  *
  * @author Felipe
  */
 @Entity
+@Table(name = "reserva")
+@NamedQueries({
+    @NamedQuery(name = "Reserva.Ativa", query = "Select c from Reserva c WHERE c.isbn=:isbn AND c.status=0 ORDER BY c.dataRes, c.codigo")})
 public class Reserva implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Codigo")
-    private Long id;
-    @Column(length = 12, name = "ISBN")
+    private Long codigo;
+    @Column(name = "ISBN", length = 18)
     private String isbn;
 
     public Long getId() {
-        return id;
+        return codigo;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.codigo = id;
     }
-    @Column(name = "Data")
+    @Column(name = "DataR")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataRes;
-    @Column(name = "Codigo_Assoc")
-    private int codAssoc;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "Codigo_Assoc", referencedColumnName = "Codigo")
+    private Associado associado;
+
+    public Associado getAssociado() {
+        return associado;
+    }
+
+    public void setAssociado(Associado associado) {
+        this.associado = associado;
+    }
+    
     @Column(name = "Status")
     private int status;
 
@@ -49,14 +70,6 @@ public class Reserva implements Serializable {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
-    }
-
-    public int getCodAssoc() {
-        return codAssoc;
-    }
-
-    public void setCodAssoc(int codAssoc) {
-        this.codAssoc = codAssoc;
     }
 
     public Date getDataRes() {
@@ -78,18 +91,18 @@ public class Reserva implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (codigo != null ? codigo.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the codigo fields are not set
         if (!(object instanceof Reserva)) {
             return false;
         }
         Reserva other = (Reserva) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
             return false;
         }
         return true;
@@ -97,6 +110,6 @@ public class Reserva implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Reserva[ id=" + id + " ]";
+        return "model.Reserva[ id=" + codigo + " ]";
     }
 }

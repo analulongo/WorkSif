@@ -2,6 +2,8 @@ package controle;
 
 import dao.EmprestimoDAO;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -10,6 +12,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import model.Emprestimo;
+import model.Reserva;
+import dao.ReservaDAO;
 
 @Named(value = "emprestimoBean")
 @SessionScoped
@@ -17,8 +21,36 @@ public class EmprestimoBean implements Serializable {
 
     @EJB
     private EmprestimoDAO emprestimoDAO;
+    private ReservaDAO reservaDAO;
     private Emprestimo emprestimo = new Emprestimo();
     private List<Emprestimo> emprestimos;
+    private int nroExemplar;
+    private String codIsbn;
+    private List<Reserva> listaReserva;
+
+    public List<Reserva> getListaReserva() {
+        return listaReserva;
+    }
+
+    public void setListaReserva(List<Reserva> listaReserva) {
+        this.listaReserva = listaReserva;
+    }
+
+    public int getNroExemplar() {
+        return nroExemplar;
+    }
+
+    public void setNroExemplar(int nroExemplar) {
+        this.nroExemplar = nroExemplar;
+    }
+
+    public String getCodIsbn() {
+        return codIsbn;
+    }
+
+    public void setCodIsbn(String codIsbn) {
+        this.codIsbn = codIsbn;
+    }
 
     public void novo() {
         emprestimo = new Emprestimo();
@@ -76,4 +108,15 @@ public class EmprestimoBean implements Serializable {
     public void setEmprestimos(List<Emprestimo> emprestimos) {
         this.emprestimos = emprestimos;
     }
+
+    public void buscaReserva() {
+        listaReserva = reservaDAO.buscaReserva(codIsbn);
+    }
+    /*
+     private String getData() {
+     Date data = new Date();  
+     SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");  
+     return formatador.format(data);
+     }
+     */
 }
