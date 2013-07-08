@@ -11,7 +11,8 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>*.jsf</url-pattern>
+            <url-pattern>*.jsf</url-pattern>
+             <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -19,11 +20,12 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index_consulta.jsf</welcome-file>
-        <welcome-file>index_publicacao.jsf</welcome-file>
-        <welcome-file>index_exemplar.jsf</welcome-file>
-        <welcome-file>index.jsf</welcome-file>
-         <welcome-file>index_ConsultaExemplar.jsf</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
+              <welcome-file>index_consulta.jsf</welcome-file>
+       <welcome-file>index_publicacao.jsf</welcome-file>
+       <welcome-file>index_exemplar.jsf</welcome-file>
+        <welcome-file>index_ConsultaExemplar.jsf</welcome-file>
+
     </welcome-file-list>
     <error-page>
         <error-code>404</error-code>
@@ -38,3 +40,4 @@
         <location>/errorIOE.xhtml</location>
     </error-page>
 </web-app>
+

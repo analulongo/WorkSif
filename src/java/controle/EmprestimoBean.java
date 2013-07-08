@@ -2,8 +2,6 @@ package controle;
 
 import dao.EmprestimoDAO;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -110,7 +108,7 @@ public class EmprestimoBean implements Serializable {
     }
 
     public void buscaReserva() {
-        listaReserva = reservaDAO.buscaReserva(codIsbn);
+        listaReserva = emprestimoDAO.buscaReserva(codIsbn);
     }
     /*
      private String getData() {

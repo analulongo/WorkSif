@@ -36,11 +36,9 @@ public class Publicacao implements Serializable {
     private String autor;
     @Column(length = 30, name = "editora")
     private String editora;
-    
     @OneToMany(mappedBy = "publicacao", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Exemplar> exemplares;
-
-     @OneToMany(mappedBy = "publicacao", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "publicacao", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Reserva> reservas;
 
     public Collection<Reserva> getReservas() {
@@ -50,6 +48,7 @@ public class Publicacao implements Serializable {
     public void setReservas(Collection<Reserva> reservas) {
         this.reservas = reservas;
     }
+
     
     public Collection<Exemplar> getExemplares() {
         return exemplares;

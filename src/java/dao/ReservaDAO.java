@@ -65,34 +65,22 @@ public class ReservaDAO {
 
         return reservas;
     }
- /*
-    public List<Reserva> listar(String isbn) {
-        List<Reserva> reservas = null;
-        try {
-            reservas = em.createNamedQuery("Exemplar.AllConsultaISBN")
-                    .setParameter("isbn", isbn)
-                    .getResultList();
+    /*
+     public List<Reserva> listar(String isbn) {
+     List<Reserva> reservas = null;
+     try {
+     reservas = em.createNamedQuery("Exemplar.AllConsultaISBN")
+     .setParameter("isbn", isbn)
+     .getResultList();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+     } catch (Exception e) {
+     e.printStackTrace();
+     }
 
-        return reservas;
-    }
-*/
-    
-        //Funçao retorn lisvro com reserva
-        public List<Reserva> buscaReserva(String isbn) {
-        List<Reserva> reservas = null;
-        try {
-            reservas = em.createNamedQuery("Reserva.Ativa")
-                    .setParameter("isbn", isbn)
-                    .getResultList();
+     return reservas;
+     }
+     */
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return reservas;
-    }
+    //Funçao retorn lisvro com reserva
+   
 }

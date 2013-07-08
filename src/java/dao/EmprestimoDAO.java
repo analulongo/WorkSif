@@ -4,14 +4,12 @@
  */
 package dao;
 
-import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import model.Emprestimo;
-import model.Publicacao;
 import model.Reserva;
 
 @Stateless
@@ -64,5 +62,18 @@ public class EmprestimoDAO {
         return emprestimos;
     }
     
+     public List<Reserva> buscaReserva(String isbn) {
+        List<Reserva> reservas = null;
+        try {
+            
+         
+            reservas = em.createNamedQuery("Reserva.Ativa")
+                    .setParameter("isbn", isbn)
+                    .getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        return reservas;
+    }
 }
