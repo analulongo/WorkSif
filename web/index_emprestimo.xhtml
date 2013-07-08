@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+    </head>
+    <body>
+        <h:form id="dadosAssociado">
+            <fieldset style="width: 350px">
+                <legend>Novo Associado</legend>
+                <h:commandButton value="Novo" action="#{emprestimoBean.novo}" />
+            </fieldset>
+            <fieldset style="width: 350px">
+                <legend>Dados do Associado</legend>
+                <h:panelGrid columns="4">
+                    <h:outputText value="codigoAssoc" />
+                    <h:inputText value="#{emprestimoBean.emprestimo.codAssoc}" />
+                    <h:outputText value="Nro_exemplar" />
+                    <h:inputText value="#{emprestimoBean.emprestimo.nroExemplar}" />
+                    <h:outputText value="dataDevol" />
+                    <h:inputText id="dateDev" value="#{emprestimoBean.emprestimo.dataDevol}">
+                        <f:convertDateTime type="dateDev" dateStyle="short" pattern="yyyy-MM-dd"/>
+                    </h:inputText>
+                    <h:outputText value="dataDeEmp" />
+                    <h:inputText id="dateEmp" value="#{emprestimoBean.emprestimo.dataEmp}">
+                        <f:convertDateTime type="dateEmp" dateStyle="short" pattern="yyyy-MM-dd"/>
+                    </h:inputText>
+                    <h:outputText value="isbn" />
+                    <h:inputText value="#{emprestimoBean.emprestimo.isbn}" />
+                    <h:commandButton value="Gravar" action="#{emprestimoBean.gravar}" />
+                    <h:commandButton value="Remover" action="#{emprestimoBean.remover}" rendered="#{emprestimoBean.emprestimo.codigo > 0}" />
+                </h:panelGrid>
+            </fieldset>
+        </h:form>
+    </body>
+</html>
