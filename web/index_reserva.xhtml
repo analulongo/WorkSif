@@ -5,11 +5,17 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <head>
-        <title>TODO supply a title</title>
-    </head>
+      xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+     <h:head>
+        <title>Reserva</title>        
+        <LINK rel="stylesheet" type="text/css" href="css/style.css"/> 
+        <div class="cab"><ui:include src="/publico/cab.xhtml"/>
+        <ui:include src="/publico/menu.xhtml"/> </div> 
+        
+   </h:head>
     <body>
         <h:form id="dadosAssociado">
             <fieldset style="width: 350px">
@@ -36,4 +42,6 @@ and open the template in the editor.
             </fieldset>
         </h:form>
     </body>
+        <div class="footer">
+        <ui:include src="/publico/footer.xhtml"/></div>
 </html>
