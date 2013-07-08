@@ -21,15 +21,15 @@ and open the template in the editor.
                 <h:panelGrid columns="4">
                     <h:outputText value="codigoAssoc" />
                     <h:inputText value="#{reservaBean.reserva.codAssoc}" />
-                     <h:outputText value="ISBN" />
-                     <h:inputText value="#{reservaBean.reserva.isbn}" />
+                    <h:outputText value="ISBN" />
+                    <h:inputText value="#{reservaBean.reserva.isbn}" />
                     <h:outputText value="dataReser" />
                     <h:inputText id="dataRes" value="#{reservaBean.reserva.dataRes}">
                         <f:convertDateTime type="dateRes" dateStyle="short" pattern="yyyy-MM-dd"/>
-                   </h:inputText>
-                      <h:outputText value="Status" />
-                      <h:inputText value="#{reservaBean.reserva.status}" />
-                  
+                    </h:inputText>
+                    <h:outputText value="Status" />
+                    <h:inputText value="#{reservaBean.reserva.status}" />
+
                     <h:commandButton value="Gravar" action="#{reservaBean.gravar}" />
                     <h:commandButton value="Remover" action="#{reservaBean.remover}" rendered="#{reservaoBean.reserva.codigo > 0}" />
                 </h:panelGrid>

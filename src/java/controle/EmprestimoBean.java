@@ -1,6 +1,5 @@
 package controle;
 
-import dao.AssociadoDAO;
 import dao.EmprestimoDAO;
 import java.io.Serializable;
 import java.util.List;
@@ -10,7 +9,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
-import model.Associado;
 import model.Emprestimo;
 
 @Named(value = "emprestimoBean")
@@ -18,7 +16,7 @@ import model.Emprestimo;
 public class EmprestimoBean implements Serializable {
 
     @EJB
-    private EmprestimoDAO  emprestimoDAO;
+    private EmprestimoDAO emprestimoDAO;
     private Emprestimo emprestimo = new Emprestimo();
     private List<Emprestimo> emprestimos;
 

@@ -12,33 +12,45 @@ and open the template in the editor.
         <h:outputStylesheet library="css" name="table-style.css"  />
     </head>
     <h:body>
-        <h:dataTable value="#{publicacaoBean.listPublicacaoConsulta}" var="publicacao" >
+        <h:dataTable value="#{publicacaoBean.listExemplarConsulta}" var="exemplar" >
             <h:column>
                 <f:facet name="header"><h:outputText value="ISBN" /></f:facet>
-                <h:outputText value="#{publicacao.isbn}" />
+                <h:outputText value="#{exemplar.publicacao.isbn}" />
             </h:column>
             <h:column>
                 <f:facet name="header"><h:outputText value="Titulo" /></f:facet>
-                <h:outputText value="#{publicacao.titulo}" />
+                <h:outputText value="#{exemplar.publicacao.titulo}" />
             </h:column>
             <h:column>
                 <f:facet name="header"><h:outputText value="Editora" /></f:facet>
-                <h:outputText value="#{publicacao.editora}" />
+                <h:outputText value="#{exemplar.publicacao.editora}" />
             </h:column>
             <h:column>
                 <f:facet name="header"><h:outputText value="Autor" /></f:facet>
-                <h:outputText value="#{publicacao.autor}" />
+                <h:outputText value="#{exemplar.publicacao.autor}" />
             </h:column>
 
-
+            <h:column>
+                <f:facet name="header"><h:outputText value="Numero" /></f:facet>
+                <h:outputText value="#{exemplar.numero}" />
+            </h:column>
+           
+            <h:column>
+                <f:facet name="header"><h:outputText value="Preco" /></f:facet>
+                <h:outputText value="#{exemplar.preco}" />
+            </h:column>
         </h:dataTable>
+
+
+
+ #{exemplarBean.numeroMax(2)}
 
         <h:form>
             <h:outputText value="ISBN" />
             <h:inputText value="#{publicacaoBean.isbn}" />
             <h:outputText value="Titulo" />
             <h:inputText value="#{publicacaoBean.titulo}" />
-            <h:commandButton value="Busca" action="#{publicacaoBean.listaConsulta()}" />
+            <h:commandButton value="Busca" action="#{publicacaoBean.listaConsulta2()}" />
         </h:form>
     </h:body>
 </html>

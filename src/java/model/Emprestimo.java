@@ -8,9 +8,12 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -21,28 +24,42 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name = "emprestimo")
 public class Emprestimo implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Codigo")
     private Long codigo;
-    
-    
     @Column(name = "Nro_Exemplar")
     private int nroExemplar;
     @Column(length = 45, name = "ISBN")
     private String isbn;
     @Column(name = "Codigo_Assoc")
     private int codAssoc;
+    /*@ManyToOne(fetch = FetchType.LAZY)
+     @JoinColumn(name = "Codigo_Assoc", nullable = false, referencedColumnName = "codigo")
+     private Associado associado;
+
+     public Associado getAssociado() {
+     return associado;
+     }
+
+     public void setAssociado(Associado associado) {
+     this.associado = associado;
+     }
+     
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ISBN", referencedColumnName = "isbn")
+    private Publicacao publicacao;
+    */
+    
     @Column(name = "Data_Emp")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataEmp;
-
     @Column(name = "Data_Devol")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataDevol;
 
-    
     public Long getCodigo() {
         return codigo;
     }
@@ -66,14 +83,15 @@ public class Emprestimo implements Serializable {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+    /*
+     public int getCodAssoc() {
+     return codAssoc;
+     }
 
-    public int getCodAssoc() {
-        return codAssoc;
-    }
-
-    public void setCodAssoc(int codAssoc) {
-        this.codAssoc = codAssoc;
-    }
+     public void setCodAssoc(int codAssoc) {
+     this.codAssoc = codAssoc;
+     }
+     */
 
     public Date getDataEmp() {
         return dataEmp;
@@ -91,7 +109,6 @@ public class Emprestimo implements Serializable {
         this.dataDevol = dataDevol;
     }
 
-  
     @Override
     public int hashCode() {
         int hash = 0;
@@ -110,5 +127,4 @@ public class Emprestimo implements Serializable {
         }
         return true;
     }
-    
 }
