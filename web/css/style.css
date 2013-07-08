@@ -35,10 +35,18 @@ root {
 }
 
 /*funcionario*/
-#dadosFuncionario,#dadosPublicacao{    
+#dadosFuncionario,#dadosPublicacao,#dadosAssociado{    
     height: 300px;
     left: 437px;
     position: relative;
     top: 50px;
-    width: 467px;;    
+    width: 467px;  
+}
+
+#consulta{    
+    height: 150px;
+    left: 437px;
+    margin: 0 0 60px;
+    position: relative;
+    top: 38px;    
 }

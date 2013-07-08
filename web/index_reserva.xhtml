@@ -19,10 +19,6 @@ and open the template in the editor.
     <body>
         <h:form id="dadosAssociado">
             <fieldset style="width: 350px">
-                <legend>Novo Associado</legend>
-                <h:commandButton value="Novo" action="#{reservaBean.novo}" />
-            </fieldset>
-            <fieldset style="width: 350px">
                 <legend>Dados do Associado</legend>
                 <h:panelGrid columns="4">
                     <h:outputText value="codigoAssoc" />
@@ -37,6 +33,7 @@ and open the template in the editor.
                     <h:inputText value="#{reservaBean.reserva.status}" />
 
                     <h:commandButton value="Gravar" action="#{reservaBean.gravar}" />
+                    <h:commandButton value="Novo" action="#{reservaBean.novo}" />
                     <h:commandButton value="Remover" action="#{reservaBean.remover}" rendered="#{reservaoBean.reserva.codigo > 0}" />
                 </h:panelGrid>
             </fieldset>

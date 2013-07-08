@@ -9,25 +9,21 @@
         <title>Associado</title>
         <!-- inserir este trecho em todas as paginas -->
         <LINK rel="stylesheet" type="text/css" href="css/style.css"/> 
-        <div class="cab"><ui:include src="/publico/cab.xhtml"/></div> 
+        <div class="cab"><ui:include src="/publico/cab.xhtml"/><ui:include src="/publico/menu.xhtml"/></div> 
     </h:head>
     <h:body>
         <h:form id="dadosAssociado">
             <fieldset style="width: 350px">
-                <legend>Novo Associado</legend>
-                <h:commandButton value="Novo" action="#{associadoBean.novo}" />
-            </fieldset>
-            <fieldset style="width: 350px">
                 <legend>Dados do Associado</legend>
                 <h:panelGrid columns="4">
-                    <h:outputText value="nome" />
+                    <h:outputText value="nome: " />
                     <h:inputText value="#{associadoBean.assoc.nome}" />
-                    <h:outputText value="endereco" />
+                    <h:outputText value="endereco: " />
                     <h:inputText value="#{associadoBean.assoc.endereco}" />
-                    <h:outputText value="email" />
-                    <h:inputText value="#{associadoBean.assoc.email}" />                    
-                    <!-- Status associado tem que ser: Grad,Posgrad ou Prof - Ana -->
-                    <h:outputText value="status" />
+                </h:panelGrid><h:panelGrid columns="4">
+                    <h:outputText value="email: " />
+                    <h:inputText value="#{associadoBean.assoc.email}" /> 
+                    <h:outputText value="status: " />
                     <h:selectOneMenu id="funcao" value="#{associadoBean.assoc.status}">  
                         <f:selectItem itemValue="Grad" itemLabel="Graduando"/>  
                         <f:selectItem itemValue="Posgrad" itemLabel="Pós-Graduando"/>  
@@ -35,6 +31,7 @@
                     </h:selectOneMenu> 
                     
                     <h:commandButton value="Gravar" action="#{associadoBean.gravar}" />
+                    <h:commandButton value="Novo" action="#{associadoBean.novo}" />
                     <h:commandButton value="Remover" action="#{associadoBean.remover}" rendered="#{associadoBean.assoc.codigo > 0}" />
                 </h:panelGrid>
             </fieldset>
