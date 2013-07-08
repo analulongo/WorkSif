@@ -27,7 +27,7 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name = "reserva")
 @NamedQueries({
-    @NamedQuery(name = "Reserva.Ativa", query = "Select c from Reserva c WHERE c.isbn=:isbn AND c.status=0 ORDER BY c.dataRes, c.codigo")})
+   @NamedQuery(name = "Reserva.Ativa", query = "SELECT e FROM Exemplar e WHERE e.publicacao.isbn=:isbn ")})
 public class Reserva implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,6 +40,21 @@ public class Reserva implements Serializable {
     @JoinColumn(name = "ISBN", referencedColumnName = "isbn")
     private Publicacao publicacao;
 
+     @Column(name = "DataR")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataR;
+     
+    @Column(name= "Status")
+    private String status;
+
+    public Date getDataR() {
+        return dataR;
+    }
+
+    public void setDataR(Date dataR) {
+        this.dataR = dataR;
+    }
+
     public Long getCodigo() {
         return codigo;
     }
@@ -47,6 +62,17 @@ public class Reserva implements Serializable {
     public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+ 
+  
 
     public Publicacao getPublicacao() {
         return publicacao;
@@ -56,18 +82,7 @@ public class Reserva implements Serializable {
         this.publicacao = publicacao;
     }
     
-    
-    
-    public Long getId() {
-        return codigo;
-    }
 
-    public void setId(Long id) {
-        this.codigo = id;
-    }
-    @Column(name = "DataR")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataRes;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Codigo_Assoc", referencedColumnName = "Codigo")
@@ -81,26 +96,6 @@ public class Reserva implements Serializable {
         this.associado = associado;
     }
     
-    @Column(name = "Status")
-    private int status;
-
-
-    public Date getDataRes() {
-        return dataRes;
-    }
-
-    public void setDataRes(Date dataRes) {
-        this.dataRes = dataRes;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
