@@ -35,7 +35,7 @@ root {
 }
 
 /*funcionario*/
-#dadosFuncionario{    
+#dadosFuncionario,#dadosPublicacao{    
     height: 300px;
     left: 437px;
     position: relative;

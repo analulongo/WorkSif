@@ -28,7 +28,7 @@ public class Publicacao implements Serializable {
 
     public static final String findByPublicacao = "Publicacao.findByPublicacao";
     @Id
-    @Column(length = 12, name = "isbn")
+    @Column(length = 18, name = "isbn")
     private String isbn;
     @Column(length = 40, name = "titulo")
     private String titulo;

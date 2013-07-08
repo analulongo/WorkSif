@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"      
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Sistema de Controle de Biblioteca</title>
         <!-- inserir este trecho em todas as paginas -->
@@ -13,19 +14,21 @@
     <h:body>
         <h:form id="dadosFuncionario">
             <fieldset style="width: 350px">
-                <legend>Novo Funcionario</legend>
-                <h:commandButton value="Novo" action="#{funcionarioBean.novo}" />
-            </fieldset>
-            <fieldset style="width: 350px">
                 <legend>Dados do Funcionario</legend>
                 <h:panelGrid columns="4">
                     <h:outputText value="nome" />
-                    <h:inputText value="#{funcionarioBean.funcionario.nome}" />
-                    <h:outputText value="funcao" />
-                    <h:inputText value="#{funcionarioBean.funcionario.funcao}" />
+                    <h:inputText value="#{funcionarioBean.funcionario.nome}" /></h:panelGrid>
+                <!--abaixo o combo para inserir a funcao - Ana-->
+                <h:panelGrid columns="4"><h:outputText value="funcao"/>
+                    <h:selectOneMenu id="funcao" value="#{funcionarioBean.funcionario.funcao}">  
+                        <f:selectItem itemValue="Gerente" itemLabel="Gerente"/>  
+                        <f:selectItem itemValue="Funcionario" itemLabel="Funcionario"/>  
+                    </h:selectOneMenu> 
+
                     <h:outputText value="email" />
                     <h:inputText value="#{funcionarioBean.funcionario.email}" />
                     <h:commandButton value="Gravar" action="#{funcionarioBean.gravar}" />
+                    <h:commandButton value="Novo Funcionário" action="#{funcionarioBean.novo}" />
                     <h:commandButton value="Remover" action="#{funcionarioBean.remover}" rendered="#{funcionarioBean.funcionario.codigo > 0}" />
                 </h:panelGrid>
             </fieldset>

@@ -25,7 +25,7 @@ public class Reserva implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Codigo")
     private Long id;
-    @Column(length = 12, name = "ISBN")
+    @Column(length = 18, name = "ISBN")
     private String isbn;
 
     public Long getId() {

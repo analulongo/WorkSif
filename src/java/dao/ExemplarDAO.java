@@ -23,8 +23,8 @@ public class ExemplarDAO {
 
     public boolean gravar(Exemplar exemplar) {
         boolean sucesso = false;
-        int valor= Integer.parseInt(numeroMax(exemplar.getPublicacao().getIsbn().toString()));
-        exemplar.setNumero();
+       // int valor= Integer.parseInt(numeroMax(exemplar.getPublicacao().getIsbn().toString()));
+       // exemplar.setNumero();
         try {
             em.merge(exemplar);
             sucesso = true;

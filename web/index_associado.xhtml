@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"            
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <LINK rel="stylesheet" type="text/css" href="css/style.css"/>
         <title>Associado</title>
@@ -24,9 +25,15 @@
                     <h:outputText value="endereco" />
                     <h:inputText value="#{associadoBean.assoc.endereco}" />
                     <h:outputText value="email" />
-                    <h:inputText value="#{associadoBean.assoc.email}" />
+                    <h:inputText value="#{associadoBean.assoc.email}" />                    
+                    <!-- Status associado tem que ser: Grad,Posgrad ou Prof - Ana -->
                     <h:outputText value="status" />
-                    <h:inputText value="#{associadoBean.assoc.status}" />
+                    <h:selectOneMenu id="funcao" value="#{associadoBean.assoc.status}">  
+                        <f:selectItem itemValue="Grad" itemLabel="Graduando"/>  
+                        <f:selectItem itemValue="Posgrad" itemLabel="Pós-Graduando"/>  
+                        <f:selectItem itemValue="Prof" itemLabel="Professor"/>  
+                    </h:selectOneMenu> 
+                    
                     <h:commandButton value="Gravar" action="#{associadoBean.gravar}" />
                     <h:commandButton value="Remover" action="#{associadoBean.remover}" rendered="#{associadoBean.assoc.codigo > 0}" />
                 </h:panelGrid>
