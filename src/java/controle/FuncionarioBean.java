@@ -23,7 +23,6 @@ public class FuncionarioBean implements Serializable {
     private FuncionarioDAO funcionarioDAO;
     private Funcionario funcionario = new Funcionario();
     private List<Funcionario> listFuncionario;
-   
 
     public void novo() {
         funcionario = new Funcionario();

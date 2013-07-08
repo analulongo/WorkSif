@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import model.Exemplar;
 import model.Publicacao;
 
 @Stateless
@@ -65,12 +66,12 @@ public class PublicacaoDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-            return pub ;
-}
-    
+        return pub;
+    }
 
     public List<Publicacao> Consulta(String isbn, String titulo) {
         List<Publicacao> publicacaoConsulta = null;
+
         try {
             publicacaoConsulta = em.createNamedQuery("Publicacao.findAllConsulta")
                     .setParameter("isbn", isbn)
@@ -79,7 +80,21 @@ public class PublicacaoDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return  publicacaoConsulta;
+        return publicacaoConsulta;
     }
 
+    public List<Exemplar> ConsultaExemplar(String isbn, String titulo) {
+        List<Exemplar> exemplar = null;
+        try {
+            exemplar = em.createNamedQuery("Exemplar.AllConsultaISBN")
+                    .setParameter("isbn", isbn)
+                    .setParameter("titulo", titulo)
+                    .getResultList();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return exemplar;
+    }
 }
