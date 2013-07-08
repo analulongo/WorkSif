@@ -16,6 +16,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.eclipse.persistence.annotations.PrimaryKey;
 
 /**
  *
@@ -30,20 +31,17 @@ public class Exemplar implements Serializable {
     @Id
     @Column(name = "Numero")
     private Long numero;
-
     @Column(name = "Preco")
     private Double preco;
-    
+   
     @Id
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ISBN", referencedColumnName = "isbn")
     private Publicacao publicacao;
-
-        @OneToMany(mappedBy = "exemplar", fetch = FetchType.EAGER)
+   
+    @OneToMany(mappedBy = "exemplar", fetch = FetchType.EAGER)
     private List<Emprestimo> emprestimoList;
 
-    
-    
     public Publicacao getPublicacao() {
         return publicacao;
     }
@@ -59,8 +57,8 @@ public class Exemplar implements Serializable {
     public void setNumero(Long numero) {
         this.numero = numero;
     }
-    
-      public Double getPreco() {
+
+    public Double getPreco() {
         return preco;
     }
 
@@ -75,24 +73,24 @@ public class Exemplar implements Serializable {
     public void setEmprestimoList(List<Emprestimo> emprestimoList) {
         this.emprestimoList = emprestimoList;
     }
-        @Override
+
+    @Override
     public int hashCode() {
         int hash = 0;
         hash += (publicacao != null ? publicacao.hashCode() : 0);
         return hash;
     }
-    
-  @Override
+
+    @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Exemplar)) {
             return false;
         }
         Exemplar other = (Exemplar) object;
-        if ((this.publicacao== null && other.publicacao!= null) || (this.publicacao != null && !this.publicacao.equals(other.publicacao))) {
+        if ((this.publicacao == null && other.publicacao != null) || (this.publicacao != null && !this.publicacao.equals(other.publicacao))) {
             return false;
         }
         return true;
     }
-
 }

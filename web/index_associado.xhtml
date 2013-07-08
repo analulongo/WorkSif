@@ -33,7 +33,7 @@
                         <f:selectItem itemValue="Posgrad" itemLabel="Pós-Graduando"/>  
                         <f:selectItem itemValue="Prof" itemLabel="Professor"/>  
                     </h:selectOneMenu> 
-                    
+
                     <h:commandButton value="Gravar" action="#{associadoBean.gravar}" />
                     <h:commandButton value="Remover" action="#{associadoBean.remover}" rendered="#{associadoBean.assoc.codigo > 0}" />
                 </h:panelGrid>

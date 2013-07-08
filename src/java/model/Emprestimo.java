@@ -32,16 +32,16 @@ public class Emprestimo implements Serializable {
     @Column(name = "Codigo")
     private Long codigo;
     /*
-    @Column(name = "Nro_Exemplar")
-    private int nroExemplar;
-    @Column(name = "ISBN", length = 18)
-    private String isbn;
-  */
+     @Column(name = "Nro_Exemplar")
+     private int nroExemplar;
+     @Column(name = "ISBN", length = 18)
+     private String isbn;
+     */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
-    @JoinColumn(name="ISBN", referencedColumnName="isbn"),  
-    @JoinColumn(name="Nro_Exemplar", referencedColumnName="numero")
-    })  
+        @JoinColumn(name = "ISBN", referencedColumnName = "isbn"),
+        @JoinColumn(name = "Nro_Exemplar", referencedColumnName = "numero")
+    })
     private Exemplar exemplar;
 
     public Exemplar getExemplar() {
@@ -51,23 +51,16 @@ public class Emprestimo implements Serializable {
     public void setExemplar(Exemplar exemplar) {
         this.exemplar = exemplar;
     }
-    
-    
-    @ManyToOne(fetch = FetchType.LAZY)
+   
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Codigo_Assoc", nullable = false, referencedColumnName = "codigo")
     private Associado associado;
 
-     public Associado getAssociado() {
-     return associado;
-     }
-
-     public void setAssociado(Associado associado) {
-     this.associado = associado;
-     }
-  
+ 
     @Column(name = "Data_Emp")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataEmp;
+    
     @Column(name = "Data_Devol")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataDevol;
@@ -79,32 +72,15 @@ public class Emprestimo implements Serializable {
     public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
-/*
-    public int getNroExemplar() {
-        return nroExemplar;
+    
+       public Associado getAssociado() {
+        return associado;
     }
 
-    public void setNroExemplar(int nroExemplar) {
-        this.nroExemplar = nroExemplar;
+    public void setAssociado(Associado associado) {
+        this.associado = associado;
     }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-    /*
-     public int getCodAssoc() {
-     return codAssoc;
-     }
-
-     public void setCodAssoc(int codAssoc) {
-     this.codAssoc = codAssoc;
-     }
-     */
-
+    
     public Date getDataEmp() {
         return dataEmp;
     }

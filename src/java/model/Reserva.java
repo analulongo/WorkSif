@@ -16,10 +16,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+
 /**
  *
  * @author Felipe
@@ -27,27 +26,21 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name = "reserva")
 @NamedQueries({
-    @NamedQuery(name = "Reserva.Ativa", query = "SELECT c FROM Reserva c WHERE c.publicacao.isbn=:isbn and c.status=0 ORDER BY c.dataRes, c.codigo ")})
+    @NamedQuery(name = "Reserva.Ativa", query = "SELECT c FROM Reserva c WHERE c.publicacao.isbn=:isbn")})
 public class Reserva implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Codigo")
     private Long codigo;
    
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ISBN", nullable = false, referencedColumnName = "ISBN")
     private Publicacao publicacao;
 
-
-    public Long getId() {
-        return codigo;
-    }
-
-    public void setId(Long id) {
-        this.codigo = id;
-    }
     @Column(name = "DataR")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataRes;
@@ -56,18 +49,9 @@ public class Reserva implements Serializable {
     @JoinColumn(name = "Codigo_Assoc", referencedColumnName = "Codigo")
     private Associado associado;
 
-    public Associado getAssociado() {
-        return associado;
-    }
-
-    public void setAssociado(Associado associado) {
-        this.associado = associado;
-    }
-    
     @Column(name = "Status")
     private int status;
 
- 
     public Date getDataRes() {
         return dataRes;
     }
@@ -82,6 +66,29 @@ public class Reserva implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+      public Associado getAssociado() {
+        return associado;
+    }
+
+    public void setAssociado(Associado associado) {
+        this.associado = associado;
+    }
+    
+        public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public Publicacao getPublicacao() {
+        return publicacao;
+    }
+
+    public void setPublicacao(Publicacao publicacao) {
+        this.publicacao = publicacao;
     }
 
     @Override
@@ -104,21 +111,6 @@ public class Reserva implements Serializable {
         return true;
     }
 
-    public Long getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
-    }
-
-    public Publicacao getPublicacao() {
-        return publicacao;
-    }
-
-    public void setPublicacao(Publicacao publicacao) {
-        this.publicacao = publicacao;
-    }
 
     @Override
     public String toString() {

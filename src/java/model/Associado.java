@@ -39,18 +39,17 @@ public class Associado implements Serializable {
     private String email;
     @Column(length = 100, name = "Status")
     private String status;
-    
-     @OneToMany(mappedBy = "associado", fetch = FetchType.LAZY)
-     private List<Emprestimo> empList;
+   
+    @OneToMany(mappedBy = "associado", fetch = FetchType.LAZY)
+    private List<Emprestimo> empList;
 
-     public List<Emprestimo> getEmpList() {
-     return empList;
-     }
+    public List<Emprestimo> getEmpList() {
+        return empList;
+    }
 
-     public void setEmpList(List<Emprestimo> empList) {
-     this.empList = empList;
-     }
-     
+    public void setEmpList(List<Emprestimo> empList) {
+        this.empList = empList;
+    }
     @OneToMany(mappedBy = "associado", fetch = FetchType.EAGER)
     private List<Reserva> reservaList;
 
