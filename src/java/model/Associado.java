@@ -13,11 +13,14 @@ package model;
  * @author wilcx-dev-02
  */
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -36,6 +39,18 @@ public class Associado implements Serializable {
     private String email;
     @Column(length = 100, name = "status")
     private String status;
+    /*
+     @OneToMany(mappedBy = "associado", fetch = FetchType.LAZY)
+     private List<Emprestimo> empList;
+
+     public List<Emprestimo> getEmpList() {
+     return empList;
+     }
+
+     public void setEmpList(List<Emprestimo> empList) {
+     this.empList = empList;
+     }
+     */
 
     public Long getCodigo() {
         return codigo;

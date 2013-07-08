@@ -84,4 +84,10 @@ public class ExemplarBean implements Serializable {
     public void setListExemplar(List<Exemplar> listExemplar) {
         this.listExemplar = listExemplar;
     }
+    
+    public void numeroMax(String isbn){
+        
+        System.out.print("Aqui "+exDAO.numeroMax(isbn));
+    }
+    
 }

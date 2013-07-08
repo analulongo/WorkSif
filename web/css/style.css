@@ -1,0 +1,44 @@
+/* 
+    Document   : style
+    Created on : 05/07/2013, 19:02:14
+    Author     : Ana
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+/*pagina associado*/
+.div{ left: 200px; position: relative; width: 1024px}
+
+/*fundo*/
+.cab, .footer {
+    background: #DFDFFF;
+}
+
+.sif {
+    float: right;
+    font-family: Comic Sans MS;
+    position: relative;
+    top: -45px;
+    width: 139px;
+}
+.nomes {
+    height: 70px;
+}
+.nomes p{
+    font-family: Comic Sans MS;
+    left: 10px;
+    position: relative;
+    top: 5px;
+}
+
+/*funcionario*/
+#dadosFuncionario{    
+    height: 300px;
+    left: 437px;
+    position: relative;
+    top: 50px;
+    width: 467px;;    
+}

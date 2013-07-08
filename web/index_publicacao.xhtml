@@ -15,15 +15,15 @@
                 <legend>Dados da publicacao</legend>
                 <h:panelGrid columns="4">
                     <h:outputText value="isbn" />
-                    <h:inputText value="#{publicacaoBean.pub.isbn}" />
+                    <h:inputText value="#{publicacaoBean.publicacao.isbn}" />
                     <h:outputText value="titulo" />
-                    <h:inputText value="#{publicacaoBean.pub.titulo}" />
+                    <h:inputText value="#{publicacaoBean.publicacao.titulo}" />
                     <h:outputText value="autor" />
-                    <h:inputText value="#{publicacaoBean.pub.email}" />
+                    <h:inputText value="#{publicacaoBean.publicacao.autor}" />
                     <h:outputText value="editora" />
-                    <h:inputText value="#{publicacaoBean.pub.editora}" />
+                    <h:inputText value="#{publicacaoBean.publicacao.editora}" />
                     <h:commandButton value="Gravar" action="#{publicacaoBean.gravar}" />
-                    <h:commandButton value="Remover" action="#{publicacaoBean.remover}" rendered="#{publicacaoBean.pub.isbn > 0}" />
+                    <h:commandButton value="Remover" action="#{publicacaoBean.remover}" rendered="#{publicacaoBean.publicacao.isbn > 0}" />
                 </h:panelGrid>
             </fieldset>
         </h:form>
