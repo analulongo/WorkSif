@@ -35,9 +35,29 @@ public class Reserva implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Codigo")
     private Long codigo;
-    @Column(name = "ISBN", length = 18)
-    private String isbn;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ISBN", referencedColumnName = "isbn")
+    private Publicacao publicacao;
 
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public Publicacao getPublicacao() {
+        return publicacao;
+    }
+
+    public void setPublicacao(Publicacao publicacao) {
+        this.publicacao = publicacao;
+    }
+    
+    
+    
     public Long getId() {
         return codigo;
     }
@@ -64,13 +84,6 @@ public class Reserva implements Serializable {
     @Column(name = "Status")
     private int status;
 
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
 
     public Date getDataRes() {
         return dataRes;

@@ -40,6 +40,17 @@ public class Publicacao implements Serializable {
     @OneToMany(mappedBy = "publicacao", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Exemplar> exemplares;
 
+     @OneToMany(mappedBy = "publicacao", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Collection<Reserva> reservas;
+
+    public Collection<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Collection<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+    
     public Collection<Exemplar> getExemplares() {
         return exemplares;
     }
