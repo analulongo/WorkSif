@@ -23,6 +23,8 @@ public class ExemplarDAO {
 
     public boolean gravar(Exemplar exemplar) {
         boolean sucesso = false;
+        int valor= Integer.parseInt(numeroMax(exemplar.getPublicacao().getIsbn().toString()));
+        exemplar.setNumero();
         try {
             em.merge(exemplar);
             sucesso = true;
@@ -68,18 +70,20 @@ public class ExemplarDAO {
 
         return exemplar;
     }
-    public List<Exemplar>Consulta(String isbn){
-        List<Exemplar> exemplar = null;
+     public int numeroMax(String isbn) {
         try {
-              exemplar = em.createNamedQuery("Exemplar.AllConsultaISBN")
-                    .setParameter("isbn", isbn)
-                    .getResultList();
-          } catch (Exception e) {
+            int valor;
+            valor= Integer.parseInt(em.createQuery("select max(u.numero) from Exemplar u WHERE u.publicacao.isbn='"+isbn+"'").getSingleResult().toString());
+        return valor;
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return exemplar; 
+        return 0;
+   
+      
     }
-
+    
+      
+    
 }
-

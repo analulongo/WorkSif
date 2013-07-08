@@ -4,9 +4,11 @@
  */
 package controle;
 
-import dao.ExemplarDAO;
+import DTD.DTDConsulta;
+import DTD.DTDGenerico;
 import dao.PublicacaoDAO;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -23,11 +25,19 @@ public class PublicacaoBean implements Serializable {
 
     @EJB
     private PublicacaoDAO publicacaoDAO;
-    private ExemplarDAO exemplarDAO;
     private Publicacao pub = new Publicacao();
     private List<Publicacao> listPublicacao;
     private List<Publicacao> listPublicacaoConsulta;
-     private List<Exemplar> listExemplarConsulta;
+    private List<Exemplar> listExemplarConsulta;
+    /*private List<DTDConsulta> listConsultaDTD;
+
+     public List<DTDConsulta> getListConsultaDTD() {
+     return listConsultaDTD;
+     }
+
+     public void setListConsultaDTD(List<DTDConsulta> listConsultaDTD) {
+     this.listConsultaDTD = listConsultaDTD;
+     }*/
 
     public List<Exemplar> getListExemplarConsulta() {
         return listExemplarConsulta;
@@ -121,14 +131,18 @@ public class PublicacaoBean implements Serializable {
         this.titulo = titulo;
     }
 
-    public void listaConsulta() {
-        listPublicacaoConsulta = publicacaoDAO.Consulta(isbn, titulo);
+    /*
+     public void listaConsulta() {
+     listPublicacaoConsulta = publicacaoDAO.Consulta(isbn, titulo);
+     }
+     */
+    public void listaConsulta2() {
+       // listPublicacaoConsulta = publicacaoDAO.Consulta(isbn, titulo);
+        listExemplarConsulta = publicacaoDAO.ConsultaExemplar(isbn, titulo);
     }
-    
-    public void listaConsulta2(){
-        listPublicacaoConsulta = publicacaoDAO.Consulta(isbn, titulo);
-        listExemplarConsulta = exemplarDAO.Consulta(isbn);
-    }
-    
-    
+    /*
+     public void listaConsulta() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException{
+     DTDGenerico consulta = new DTDGenerico();
+     listConsultaDTD= consulta.consultaPublicacao(isbn, titulo);   
+     }*/
 }

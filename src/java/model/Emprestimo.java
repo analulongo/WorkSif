@@ -47,7 +47,12 @@ public class Emprestimo implements Serializable {
      public void setAssociado(Associado associado) {
      this.associado = associado;
      }
-     */
+     
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ISBN", referencedColumnName = "isbn")
+    private Publicacao publicacao;
+    */
+    
     @Column(name = "Data_Emp")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataEmp;

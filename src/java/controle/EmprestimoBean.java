@@ -1,6 +1,5 @@
 package controle;
 
-import dao.AssociadoDAO;
 import dao.EmprestimoDAO;
 import java.io.Serializable;
 import java.util.List;
@@ -10,7 +9,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
-import model.Associado;
 import model.Emprestimo;
 
 @Named(value = "emprestimoBean")

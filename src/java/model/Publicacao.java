@@ -6,7 +6,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.HashSet;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,7 +36,7 @@ public class Publicacao implements Serializable {
     private String autor;
     @Column(length = 30, name = "editora")
     private String editora;
-    @OneToMany(mappedBy = "publicacao", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "publicacao", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Exemplar> exemplares;
 
     public Collection<Exemplar> getExemplares() {
