@@ -1,33 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Cadastrar Publicacao</title>
+        <!-- inserir este trecho em todas as paginas -->
+        <LINK rel="stylesheet" type="text/css" href="css/style.css"/> 
+        <div class="cab"><ui:include src="/publico/cab.xhtml"/>
+        <ui:include src="/publico/menu.xhtml"/> </div> 
     </h:head>
     <h:body>
         <h:form id="dadosPublicacao">
             <fieldset style="width: 350px">
-                <legend>Nova Publicacao</legend>
-                <h:commandButton value="Novo" action="#{publicacaoBean.novo}" />
-            </fieldset>
-            <fieldset style="width: 350px">
                 <legend>Dados da publicacao</legend>
                 <h:panelGrid columns="4">
                     <h:outputText value="isbn" />
-                    <h:inputText value="#{publicacaoBean.pub.isbn}" />
+                    <h:inputText value="#{publicacaoBean.publicacao.isbn}" />
                     <h:outputText value="titulo" />
-                    <h:inputText value="#{publicacaoBean.pub.titulo}" />
+                    <h:inputText value="#{publicacaoBean.publicacao.titulo}" />
                     <h:outputText value="autor" />
-                    <h:inputText value="#{publicacaoBean.pub.email}" />
+                    <h:inputText value="#{publicacaoBean.publicacao.autor}" />
                     <h:outputText value="editora" />
-                    <h:inputText value="#{publicacaoBean.pub.editora}" />
+                    <h:inputText value="#{publicacaoBean.publicacao.editora}" />
                     <h:commandButton value="Gravar" action="#{publicacaoBean.gravar}" />
-                    <h:commandButton value="Remover" action="#{publicacaoBean.remover}" rendered="#{publicacaoBean.pub.isbn > 0}" />
+                    <h:commandButton value="Nova Publiação" action="#{publicacaoBean.novo}" />
+                    <h:commandButton value="Remover" action="#{publicacaoBean.remover}" rendered="#{publicacaoBean.publicacao.isbn > 0}" />
                 </h:panelGrid>
             </fieldset>
         </h:form>
     </h:body>
+    <div class="footer">
+        <ui:include src="/publico/footer.xhtml"/>
+    </div>
 </html>
 
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:ui="http://java.sun.com/jsf/facelets"      
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Empréstimo</title>
+        <!-- inserir este trecho em todas as paginas -->
+        <LINK rel="stylesheet" type="text/css" href="css/style.css"/> 
+        <div class="cab"><ui:include src="/publico/cab.xhtml"/>
+            <ui:include src="/publico/menu.xhtml"/> </div> 
+    </h:head>
+    <body>
+        <h:form id="dadosAssociado">
+            <fieldset style="width: 350px">
+                <legend>Emprestimo</legend>
+                <h:commandButton value="Novo" action="#{emprestimoBean.novo}" />
+            </fieldset>
+            <fieldset style="width: 350px">
+                <legend>Dados do Associado</legend>
+                <h:panelGrid columns="4">
+                    <h:outputText value="codigoAssoc" />
+                    <h:inputText value="#{emprestimoBean.emprestimo.codAssoc}" />
+                    <h:outputText value="Nro_exemplar" />
+                    <h:inputText value="#{emprestimoBean.emprestimo.nroExemplar}" />
+                    <h:outputText value="dataDevol" />
+                    <h:inputText id="dateDev" value="#{emprestimoBean.emprestimo.dataDevol}">
+                        <f:convertDateTime type="dateDev" dateStyle="short" pattern="yyyy-MM-dd"/>
+                    </h:inputText>
+                    <h:outputText value="dataDeEmp" />
+                    <h:inputText id="dateEmp" value="#{emprestimoBean.emprestimo.dataEmp}">
+                        <f:convertDateTime type="dateEmp" dateStyle="short" pattern="yyyy-MM-dd"/>
+                    </h:inputText>
+                    <h:outputText value="isbn" />
+                    <h:inputText value="#{emprestimoBean.emprestimo.isbn}" />
+                    <h:commandButton value="Gravar" action="#{emprestimoBean.gravar}" />
+                    <h:commandButton value="Remover" action="#{emprestimoBean.remover}" rendered="#{emprestimoBean.emprestimo.codigo > 0}" />
+                </h:panelGrid>
+            </fieldset>
+        </h:form>
+    </body>
+    <div class="footer">
+        <ui:include src="/publico/footer.xhtml"/>
+    </div>
+</html>
