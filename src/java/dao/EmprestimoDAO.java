@@ -4,12 +4,15 @@
  */
 package dao;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import model.Emprestimo;
+import model.Publicacao;
+import model.Reserva;
 
 @Stateless
 public class EmprestimoDAO {
@@ -60,4 +63,6 @@ public class EmprestimoDAO {
 
         return emprestimos;
     }
+    
+
 }

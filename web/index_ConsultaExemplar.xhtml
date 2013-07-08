@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <div class="cab"><ui:include src="/publico/cab.xhtml"/></div>  
+    <body>
+       
+            <fieldset style="width: 350px">
+                <legend>Consulta Exemplar</legend>      
+            
+                <h:dataTable value="#{emprestimoBean.listaReserva}" var="reserva" >
+            <h:column>
+                <f:facet name="header"><h:outputText value="Codigo" /></f:facet>
+                <h:outputText value="#{reserva.id}" />
+            </h:column>
+                           <h:column>
+                <f:facet name="header"><h:outputText value="Codigo" /></f:facet>
+                <h:outputText value="#{reserva.dataRes}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="ISBN" /></f:facet>
+                <h:outputText value="#{reserva.isbn}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Status" /></f:facet>
+                <h:outputText value="#{reserva.status}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Associado" /></f:facet>
+                <h:outputText value="#{reserva.associado.codigo}" />
+            </h:column>
+                    
+            <h:column>
+                <f:facet name="header"><h:outputText value="Email" /></f:facet>
+                <h:outputText value="#{reserva.associado.email}" />
+            </h:column>
+                    
+                    
+            </h:dataTable>
+                </fieldset>
+          <h:form id="ConsultaExemplar">
+            <fieldset style="width: 350px">
+                <h:panelGrid columns="4">
+                    <h:outputText value="Publicacao" />
+                    <h:inputText value="#{emprestimoBean.codIsbn}" />
+                    <h:commandButton value="Busca" action="#{emprestimoBean.buscaReserva()}" />
+                </h:panelGrid>
+            </fieldset>
+        </h:form>
+    </body>
+</html>

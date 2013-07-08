@@ -28,7 +28,7 @@ public class Publicacao implements Serializable {
 
     public static final String findByPublicacao = "Publicacao.findByPublicacao";
     @Id
-    @Column(length = 12, name = "isbn")
+    @Column(name = "isbn", length = 18)
     private String isbn;
     @Column(length = 40, name = "titulo")
     private String titulo;
@@ -36,6 +36,7 @@ public class Publicacao implements Serializable {
     private String autor;
     @Column(length = 30, name = "editora")
     private String editora;
+    
     @OneToMany(mappedBy = "publicacao", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Exemplar> exemplares;
 

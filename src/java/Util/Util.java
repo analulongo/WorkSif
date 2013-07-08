@@ -9,9 +9,8 @@ package Util;
  * @author Felipe
  */
 public abstract class Util {
-    
-    public static int Grad=7;
-    public static int Posgrad=10;
-    public static int Prof=14;
-    
+
+    public static int Grad = 7;
+    public static int Posgrad = 10;
+    public static int Prof = 14;
 }

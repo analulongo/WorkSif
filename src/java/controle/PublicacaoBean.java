@@ -4,11 +4,8 @@
  */
 package controle;
 
-import DTD.DTDConsulta;
-import DTD.DTDGenerico;
 import dao.PublicacaoDAO;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -137,7 +134,7 @@ public class PublicacaoBean implements Serializable {
      }
      */
     public void listaConsulta2() {
-       // listPublicacaoConsulta = publicacaoDAO.Consulta(isbn, titulo);
+        // listPublicacaoConsulta = publicacaoDAO.Consulta(isbn, titulo);
         listExemplarConsulta = publicacaoDAO.ConsultaExemplar(isbn, titulo);
     }
     /*

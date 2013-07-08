@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -30,15 +31,31 @@ public class Emprestimo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Codigo")
     private Long codigo;
+    /*
     @Column(name = "Nro_Exemplar")
     private int nroExemplar;
-    @Column(length = 45, name = "ISBN")
+    @Column(name = "ISBN", length = 18)
     private String isbn;
-    @Column(name = "Codigo_Assoc")
-    private int codAssoc;
-    /*@ManyToOne(fetch = FetchType.LAZY)
-     @JoinColumn(name = "Codigo_Assoc", nullable = false, referencedColumnName = "codigo")
-     private Associado associado;
+  */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+    @JoinColumn(name="ISBN", referencedColumnName="isbn"),  
+    @JoinColumn(name="Nro_Exemplar", referencedColumnName="numero")
+    })  
+    private Exemplar exemplar;
+
+    public Exemplar getExemplar() {
+        return exemplar;
+    }
+
+    public void setExemplar(Exemplar exemplar) {
+        this.exemplar = exemplar;
+    }
+    
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Codigo_Assoc", nullable = false, referencedColumnName = "codigo")
+    private Associado associado;
 
      public Associado getAssociado() {
      return associado;
@@ -47,12 +64,7 @@ public class Emprestimo implements Serializable {
      public void setAssociado(Associado associado) {
      this.associado = associado;
      }
-     
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ISBN", referencedColumnName = "isbn")
-    private Publicacao publicacao;
-    */
-    
+  
     @Column(name = "Data_Emp")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataEmp;
@@ -67,7 +79,7 @@ public class Emprestimo implements Serializable {
     public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
-
+/*
     public int getNroExemplar() {
         return nroExemplar;
     }

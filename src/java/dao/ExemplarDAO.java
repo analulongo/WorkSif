@@ -70,20 +70,19 @@ public class ExemplarDAO {
 
         return exemplar;
     }
-     public int numeroMax(String isbn) {
+
+    //Ultimo valor inserido
+    public int numeroMax(String isbn) {
         try {
             int valor;
-            valor= Integer.parseInt(em.createQuery("select max(u.numero) from Exemplar u WHERE u.publicacao.isbn='"+isbn+"'").getSingleResult().toString());
-        return valor;
+            valor = Integer.parseInt(em.createQuery("select max(u.numero) from Exemplar u WHERE u.publicacao.isbn='" + isbn + "'").getSingleResult().toString());
+            return valor;
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         return 0;
-   
-      
+
+
     }
-    
-      
-    
 }
