@@ -27,7 +27,7 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name = "reserva")
 @NamedQueries({
-    @NamedQuery(name = "Reserva.Ativa", query = "Select c from Reserva c WHERE c.isbn=:isbn AND c.status=0 ORDER BY c.dataRes, c.codigo")})
+    @NamedQuery(name = "Reserva.Ativa", query = "SELECT c FROM Reserva c WHERE c.publicacao.isbn=:isbn and c.status=0 ORDER BY c.dataRes, c.codigo ")})
 public class Reserva implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,8 +35,11 @@ public class Reserva implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Codigo")
     private Long codigo;
-    @Column(name = "ISBN", length = 18)
-    private String isbn;
+   
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ISBN", nullable = false, referencedColumnName = "ISBN")
+    private Publicacao publicacao;
+
 
     public Long getId() {
         return codigo;
@@ -64,14 +67,7 @@ public class Reserva implements Serializable {
     @Column(name = "Status")
     private int status;
 
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
+ 
     public Date getDataRes() {
         return dataRes;
     }
@@ -106,6 +102,22 @@ public class Reserva implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public Publicacao getPublicacao() {
+        return publicacao;
+    }
+
+    public void setPublicacao(Publicacao publicacao) {
+        this.publicacao = publicacao;
     }
 
     @Override

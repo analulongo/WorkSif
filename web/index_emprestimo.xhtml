@@ -20,9 +20,9 @@ and open the template in the editor.
                 <legend>Dados do Associado</legend>
                 <h:panelGrid columns="4">
                     <h:outputText value="codigoAssoc" />
-                    <h:inputText value="#{emprestimoBean.emprestimo}" />
+                    <h:inputText value="#{emprestimoBean.emprestimo.codAssoc}" />
                     <h:outputText value="Nro_exemplar" />
-                    <h:inputText value="#{emprestimoBean.emprestimo}" />
+                    <h:inputText value="#{emprestimoBean.emprestimo.nroExemplar}" />
                     <h:outputText value="dataDevol" />
                     <h:inputText id="dateDev" value="#{emprestimoBean.emprestimo.dataDevol}">
                         <f:convertDateTime type="dateDev" dateStyle="short" pattern="yyyy-MM-dd"/>
